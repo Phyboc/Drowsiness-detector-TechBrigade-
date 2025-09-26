@@ -2,7 +2,11 @@
 #include <esp_camera.h>
 #include <edge-impulse-sdk/classifier/ei_run_classifier.h>
 
-#define DEVKIT_SERIAL Serial
+#define DEBUG_SERIAL Serial
+#define DEVKIT_SERIAL Serial1  
+
+#define CAM_TX_PIN 14  // ESP32-CAM TX to DevKit RX
+#define CAM_RX_PIN 15  // ESP32-CAM RX to DevKit TX
 
 #define PWDN_GPIO_NUM    -1
 #define RESET_GPIO_NUM   -1
@@ -22,8 +26,8 @@
 #define PCLK_GPIO_NUM    22
 
 void setup() {
-  DEVKIT_SERIAL.begin(115200);
-  Serial.begin(115200);
+  DEBUG_SERIAL.begin(115200);
+  DEVKIT_SERIAL.begin(115200, SERIAL_8N1, CAM_RX_PIN, CAM_TX_PIN);
 
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
@@ -51,17 +55,17 @@ void setup() {
   config.fb_count = 1;
 
   if (esp_camera_init(&config) != ESP_OK) {
-    Serial.println("Camera init failed");
+    DEBUG_SERIAL.println("Camera init failed");
     return;
   }
 
-  Serial.println("ESP32-CAM Ready");
+  DEBUG_SERIAL.println("ESP32-CAM Ready");
 }
 
 void loop() {
   camera_fb_t *fb = esp_camera_fb_get();
   if (!fb) {
-    Serial.println("Frame buffer failed");
+    DEBUG_SERIAL.println("Frame buffer failed");
     return;
   }
 
@@ -74,7 +78,7 @@ void loop() {
   esp_camera_fb_return(fb);
 
   if (res != EI_IMPULSE_OK) {
-    Serial.println("Classifier error");
+    DEBUG_SERIAL.println("Classifier error");
     return;
   }
 
@@ -82,11 +86,11 @@ void loop() {
   float closed_score = result.classification[1].value;
 
   if (closed_score > open_score) {
+    DEBUG_SERIAL.println("closed");
     DEVKIT_SERIAL.println("closed");
-    Serial.println("closed");
   } else {
+    DEBUG_SERIAL.println("open");
     DEVKIT_SERIAL.println("open");
-    Serial.println("open");
   }
 
   delay(200); 
