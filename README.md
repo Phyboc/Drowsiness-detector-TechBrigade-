@@ -2,7 +2,7 @@
 
 ## Project Overview
 This project detects driver drowsiness using **ESP32-CAM** and **ESP32-DevKit**.  
-It monitors **eye blinking** and **head tilting** via an Edge Impulse ML model.  
+It monitors **eye blinking** via an Edge Impulse ML model.  
 If the driver’s eyes remain closed for more than 2 seconds, a buzzer is triggered to alert them.  
 
 Built for **SmartCityX Hackathon – Urban Infrastructure (2D Model Track)**.
