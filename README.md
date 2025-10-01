@@ -27,7 +27,7 @@ Built for **SmartCityX Hackathon – Urban Infrastructure (2D Model Track)**.
 ---
 
 ## Important Links
--  [Dataset (Edge Impulse)]([https://studio.edgeimpulse.com/studio/789488](https://github.com/Phyboc/Drowsiness-detector-TechBrigade-/blob/main/AI/Drowsiness%20Detection%20System%20Dataset.zip))  
+-  [Dataset (Edge Impulse)](https://github.com/Phyboc/Drowsiness-detector-TechBrigade-/blob/main/AI/Drowsiness%20Detection%20System%20Dataset.zip)  
 -  [Wokwi Simulation](https://wokwi.com/projects/437271120295952385)   
 -  [Circuit Diagram](Circuit-Diagram/circuit_diagram.png)  
 -  [Edge Impulse Project](https://studio.edgeimpulse.com/studio/789488) 
