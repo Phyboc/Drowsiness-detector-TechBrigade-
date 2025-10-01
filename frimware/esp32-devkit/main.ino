@@ -4,7 +4,7 @@
 #define BLYNK_TEMPLATE_ID   "TMPL3Hy5PI7Ve"
 #define BLYNK_TEMPLATE_NAME "Drowsiness Detection System"
 
-char auth[] = "YOUR_BLYNK_TOKEN";
+char auth[] = "E3SiPhzjxRyXR0CKaEiY86-cziIlg-iV";
 char ssid[] = "YOUR_WIFI";
 char pass[] = "YOUR_PASS";
 
